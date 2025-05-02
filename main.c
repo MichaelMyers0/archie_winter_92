@@ -1,6 +1,8 @@
-#include <unistd.h>
+#include "ftp.h"
 
 int main()
 {
-	_exit(0);
+	ftp ftp_server(".");
+	ftp_server.build();
+	exit(0);
 }
