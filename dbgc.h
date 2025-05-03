@@ -12,6 +12,7 @@ class dbgc
 public:	
 	dbgc();
 	void gather_files(const std::initializer_list<const char*>& list);
+	std::vector<std::vector<const char*>> dump_db();
 	~dbgc() = default;
 };
 #endif

@@ -14,5 +14,6 @@ int main(int argc, char** argv)
 	dbgc c;
 	std::initializer_list<const char*> list{*(argv + 1)};
 	c.gather_files(list);
+	std::vector<std::vector<const char*>> v = c.dump_db();
 	exit(0);
 }

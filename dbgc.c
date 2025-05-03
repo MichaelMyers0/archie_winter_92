@@ -41,3 +41,8 @@ void dbgc::gather_files(const std::initializer_list<const char*>& ftp_server_nam
 		v.clear();
 	}
 }
+
+std::vector<std::vector<const char*>> dbgc::dump_db()
+{
+	return *db;
+}
