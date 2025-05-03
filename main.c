@@ -1,5 +1,6 @@
 #include "ftp.h"
 #include "dbgc.c"
+#include "archie_db.h"
 int main(int argc, char** argv)
 {
 	if (argc < 2)
@@ -15,5 +16,7 @@ int main(int argc, char** argv)
 	std::initializer_list<const char*> list{*(argv + 1)};
 	c.gather_files(list);
 	std::vector<std::vector<const char*>> v = c.dump_db();
+	archie_db a_db;
+	a_db.init_db(v);
 	exit(0);
 }
