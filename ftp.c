@@ -11,10 +11,6 @@ void ftp::open_dir(DIR*& dirp, const char* path)
 	}
 }
 
-void ftp::read_dir()
-{
-}
-
 void ftp::close_dir(DIR* dirp)
 {
 	int res;
@@ -29,7 +25,6 @@ void ftp::close_dir(DIR* dirp)
 
 ftp::ftp()
 {
-	printf("jfd");
 	list_of_files = std::make_shared<std::list<entry>>();
 	if (!list_of_files)
 	{
@@ -53,6 +48,20 @@ ftp::ftp(const char* path_start) : ftp()
 
 void ftp::build()
 {
+	struct dirent* ent;
+	entry e;
 	open_dir(dirp, start);
+	while ((ent = readdir(dirp)))
+	{
+		if (0 == strcmp(ent->d_name, ".") || 0 == strcmp(ent->d_name, ".."))
+			continue;
+		if (ent->d_type == DT_REG)
+		{	
+			auto len = strlen(ent->d_name);
+			strcpy(e.f_name, ent->d_name);
+			*(e.f_name + len) = 0;
+			list_of_files->push_back(e);
+		}
+	}
 	close_dir(dirp);
 }

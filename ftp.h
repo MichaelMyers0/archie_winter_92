@@ -20,8 +20,9 @@ class ftp
 	std::shared_ptr<std::list<entry>> list_of_files;
 	char start[length];
 	void open_dir(DIR*& dirp, const char* path=".");
-	void read_dir();
 	void close_dir(DIR* dirp);
+	ftp(const ftp& fpt_s) = delete;
+	ftp& operator=(const ftp& ftp_s) = delete;
 public:
 	ftp();
 	ftp(const char* path_start);
