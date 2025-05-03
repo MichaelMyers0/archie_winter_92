@@ -7,7 +7,7 @@
 class dbgc
 {
 	std::shared_ptr<std::vector<ftp>> list_of_ftp_servers;
-	std::shared_ptr<std::vector<std::string>> db;
+	std::shared_ptr<std::vector<std::vector<const char*>>> db;
 	void init_servers(const std::initializer_list<const char*>& servers);
 public:	
 	dbgc();

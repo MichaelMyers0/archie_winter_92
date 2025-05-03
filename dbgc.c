@@ -8,7 +8,7 @@ dbgc::dbgc()
 		fprintf(stderr, "ERROR: Failed to create a list_of_ftp_servers\n");
 		exit(1);
 	}
-	db = std::make_shared<std::vector<std::string>>();
+	db = std::make_shared<std::vector<std::vector<const char*>>>();
 	if (!db)
 	{
 		fprintf(stderr, "ERROR: Failed to create a db\n");
@@ -31,4 +31,13 @@ void dbgc::init_servers(const std::initializer_list<const char*>& servers)
 void dbgc::gather_files(const std::initializer_list<const char*>& ftp_server_names)
 {
 	init_servers(ftp_server_names);
+	std::vector<const char*> v;
+	auto iter = list_of_ftp_servers->begin();
+	while (iter != list_of_ftp_servers->end())
+	{
+		iter->get_files(v);
+		db->push_back(v);
+		iter++;
+		v.clear();
+	}
 }
