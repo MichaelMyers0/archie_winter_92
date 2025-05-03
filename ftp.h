@@ -21,8 +21,10 @@ class ftp
 	char start[length];
 	void open_dir(DIR*& dirp, const char* path=".");
 	void close_dir(DIR* dirp);
+#if 0	
 	ftp(const ftp& fpt_s) = delete;
 	ftp& operator=(const ftp& ftp_s) = delete;
+#endif	
 public:
 	ftp();
 	ftp(const char* path_start);
