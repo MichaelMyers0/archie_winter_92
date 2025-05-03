@@ -29,7 +29,7 @@ void ftp::close_dir(DIR* dirp)
 
 ftp::ftp()
 {
-	printf("for a delegating constructor\n");
+	printf("jfd");
 	list_of_files = std::make_shared<std::list<entry>>();
 	if (!list_of_files)
 	{
