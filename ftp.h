@@ -12,8 +12,12 @@ class ftp
 {
 	enum {length = 255};
 	DIR* dirp;
-	typedef char string_t[length];
-	std::list<std::string> list_of_files;
+	typedef char name_t[length];
+	struct entry
+	{
+		name_t f_name;
+	};
+	std::list<entry> list_of_files;
 	char start[length];
 	void open_dir(DIR*& dirp, const char* path);
 	void read_dir();
