@@ -7,7 +7,7 @@
 #include <list>
 #include <string.h>
 #include <sys/types.h>
-#include <string>
+#include <memory>
 class ftp
 {
 	enum {length = 255};
@@ -17,13 +17,13 @@ class ftp
 	{
 		name_t f_name;
 	};
-	std::list<entry> list_of_files;
+	std::shared_ptr<std::list<entry>> list_of_files;
 	char start[length];
-	void open_dir(DIR*& dirp, const char* path);
+	void open_dir(DIR*& dirp, const char* path=".");
 	void read_dir();
 	void close_dir(DIR* dirp);
 public:
-	ftp() = default;
+	ftp();
 	ftp(const char* path_start);
 	void build();
 	~ftp() = default;

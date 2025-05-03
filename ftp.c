@@ -27,14 +27,25 @@ void ftp::close_dir(DIR* dirp)
 	}
 }
 
-ftp::ftp(const char* path_start)
+ftp::ftp()
+{
+	printf("for a delegating constructor\n");
+	list_of_files = std::make_shared<std::list<entry>>();
+	if (!list_of_files)
+	{
+		fprintf(stderr, "ERROR: fpt::ftp() failed to create a list\n");
+		exit(4);
+	}
+}
+
+ftp::ftp(const char* path_start) : ftp()
 {
 	size_t len;
 	len = strlen(path_start);
 	if (!path_start || len >= length)
 	{
 		fprintf(stderr, "ERROR: Provided path is too long\n");
-		exit(1);
+		exit(5);
 	}
 	strcpy(start, path_start);
 	*(start + len) = 0;
