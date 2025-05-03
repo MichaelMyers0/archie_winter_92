@@ -65,3 +65,13 @@ void ftp::build()
 	}
 	close_dir(dirp);
 }
+
+void ftp::get_files(std::vector<const char*>& vec)
+{
+	auto iter2 = list_of_files->cbegin();
+	while (iter2 != list_of_files->cend())
+	{
+		vec.push_back(iter2->f_name);	
+		iter2++;
+	}
+}

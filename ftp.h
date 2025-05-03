@@ -8,6 +8,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <memory>
+#include <vector>
 class ftp
 {
 	enum {length = 255};
@@ -25,6 +26,7 @@ public:
 	ftp();
 	ftp(const char* path_start);
 	void build();
+	void get_files(std::vector<const char*>& vec);
 	~ftp() = default;
 };
 #endif

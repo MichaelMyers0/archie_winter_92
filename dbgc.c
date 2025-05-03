@@ -22,6 +22,7 @@ void dbgc::init_servers(const std::initializer_list<const char*>& servers)
         while (iter != servers.end())
         {
 		ftp f(*iter);
+		f.build();
                 list_of_ftp_servers->push_back(f);
                 iter++;
         }
