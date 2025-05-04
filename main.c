@@ -18,5 +18,6 @@ int main(int argc, char** argv)
 	std::vector<std::vector<const char*>> v = c.dump_db();
 	archie_db a_db;
 	a_db.init_db(v);
+	a_db.find_file("main.c");
 	exit(0);
 }
